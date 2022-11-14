@@ -1,37 +1,20 @@
+import styled from "styled-components"
+import Container from "./components/Container"
+
+const StyledApp = styled.div`
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
 function App() {
   return (
-    <div>
-      <div>
-        <h1>h1</h1>
-        <form>
-          <div>
-            <span></span>
-            <input />
-            <span></span>
-          </div>
-          <div>
-            <span></span>
-            <input />
-            <span></span>
-          </div>
-          <div>
-            <span></span>
-            <input />
-            <span></span>
-          </div>
-        </form>
-      </div>
-      <div>
-        <h2>h2</h2>
-        <div></div>
-        <ul>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
-      </div>
-    </div>
+    <StyledApp>
+      <Container />
+    </StyledApp>
   )
 }
 
