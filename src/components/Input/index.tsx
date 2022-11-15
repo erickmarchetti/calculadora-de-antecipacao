@@ -7,13 +7,24 @@ interface InputProps {
   register: UseFormRegister<CalculatorPostData>
   registerName: "amount" | "installments" | "mdr" | "days"
   errors: Partial<FieldErrorsImpl<CalculatorPostData>>
+  placeholder: string
 }
 
-const Input = ({ label, register, registerName, errors }: InputProps) => {
+const Input = ({
+  label,
+  register,
+  registerName,
+  errors,
+  placeholder
+}: InputProps) => {
   return (
     <StyledInput>
       <span>{label}</span>
-      <input type="number" {...register(registerName)} />
+      <input
+        type="number"
+        placeholder={placeholder}
+        {...register(registerName)}
+      />
       {errors[registerName]?.message && (
         <span>
           {errors[registerName]?.message?.includes("NaN")

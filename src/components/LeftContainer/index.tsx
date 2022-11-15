@@ -50,18 +50,21 @@ const LeftContainer = () => {
       <form onChange={handleSubmit(onSubmit)}>
         <Input
           label="Informe o valor da venda *"
+          placeholder="Ex: R$150 -> 15000"
           register={register}
           registerName="amount"
           errors={errors}
         />
         <Input
           label="Em quantas parcelas *"
+          placeholder="Ex: 3"
           register={register}
           registerName="installments"
           errors={errors}
         />
         <Input
           label="Informe o percentual de MDR *"
+          placeholder="Ex: 70"
           register={register}
           registerName="mdr"
           errors={errors}
