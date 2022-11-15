@@ -3,8 +3,8 @@ import { StyledRightContainer } from "./style"
 
 const RightContainer = () => (
   <StyledRightContainer>
-    <h2>h2</h2>
-    <div></div>
+    <h2>Você receberá:</h2>
+    <div className="rightContainer__div--divider"></div>
     <List />
   </StyledRightContainer>
 )

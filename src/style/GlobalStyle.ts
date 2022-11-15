@@ -42,6 +42,7 @@ export const GlobalStyle = createGlobalStyle`
       --input-border: #DDE6E9;
       --input-error: #F71735;
       --text-default: #656565;
+      --background-list: #D1DCE32E;
       --title-list: #3D75BB;
       --text-list: #5D9CEC;
     }
