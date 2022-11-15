@@ -1,12 +1,12 @@
 import { StyledInput } from "./style"
 import { UseFormRegister, FieldErrorsImpl } from "react-hook-form"
-import { CalculatorFormInput } from "../../interfaces"
+import { CalculatorPostData } from "../../interfaces"
 
 interface InputProps {
   label: string
-  register: UseFormRegister<CalculatorFormInput>
+  register: UseFormRegister<CalculatorPostData>
   registerName: "amount" | "installments" | "mdr" | "days"
-  errors: Partial<FieldErrorsImpl<CalculatorFormInput>>
+  errors: Partial<FieldErrorsImpl<CalculatorPostData>>
 }
 
 const Input = ({ label, register, registerName, errors }: InputProps) => {

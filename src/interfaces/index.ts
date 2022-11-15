@@ -1,4 +1,4 @@
-export interface CalculatorFormInput {
+export interface CalculatorPostData {
   amount: number
   installments: number
   mdr: number
