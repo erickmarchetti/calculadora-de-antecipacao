@@ -3,7 +3,10 @@ import {
   CalculatorResultDefault,
   CalculatorPostData
 } from "../../interfaces/index"
+
 import api from "../../api/index"
+
+import { toast } from "react-toastify"
 
 interface CalculatorContextProps {
   calculatorResult: CalculatorResultDefault
@@ -30,13 +33,20 @@ export const CalculatorProvider = ({ children }: CalculatorProviderProps) => {
     useState<CalculatorResultDefault>(initialValue)
 
   const calculatorPost = (data: CalculatorPostData) => {
-    api
-      .post("", data)
-      .then((res) => setCalculatorResult(res.data))
-      .catch((err) => {
-        console.log(err)
-        setCalculatorResult(initialValue)
-      })
+    toast.promise(
+      api
+        .post("", data)
+        .then((res) => {
+          setCalculatorResult(res.data)
+          toast.success("Calculo feito!", { delay: 500 })
+        })
+        .catch((err) => {
+          console.log(err)
+          setCalculatorResult(initialValue)
+          toast.error("Ocorreu um erro", { delay: 500 })
+        }),
+      { pending: "Carregando..." }
+    )
   }
 
   return (
