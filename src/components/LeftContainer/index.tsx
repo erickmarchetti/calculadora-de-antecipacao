@@ -6,8 +6,9 @@ import { useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
 
-import { CalculatorFormInput } from "../../interfaces"
+import { CalculatorPostData } from "../../interfaces"
 import { StyledLeftContainer } from "./style"
+import useCalculatorContext from "../../providers/calculator"
 
 const calculatorFormSchema = yup.object({
   amount: yup
@@ -24,22 +25,25 @@ const calculatorFormSchema = yup.object({
 
 const LeftContainer = () => {
   const [lastTimer, setLastTimer] = useState<NodeJS.Timeout | undefined>()
+  const calculatorContext = useCalculatorContext()
 
   const {
     register,
     handleSubmit,
     formState: { errors }
-  } = useForm<CalculatorFormInput>({
+  } = useForm<CalculatorPostData>({
     mode: "onBlur",
     shouldFocusError: false,
     shouldUnregister: false,
     resolver: yupResolver(calculatorFormSchema)
   })
 
-  const onSubmit = (data: CalculatorFormInput) => {
+  const onSubmit = (data: CalculatorPostData) => {
     clearTimeout(lastTimer)
 
-    setLastTimer(setTimeout(() => console.log(data), 1500))
+    setLastTimer(
+      setTimeout(() => calculatorContext?.calculatorPost(data), 1500)
+    )
   }
 
   return (
