@@ -33,10 +33,12 @@ const LeftContainer = () => {
 
   const {
     register,
+    watch,
     handleSubmit,
     formState: { errors }
   } = useForm<CalculatorPostData>({
     mode: "onBlur",
+    reValidateMode: "onChange",
     shouldFocusError: false,
     shouldUnregister: false,
     resolver: yupResolver(calculatorFormSchema)
@@ -47,6 +49,8 @@ const LeftContainer = () => {
 
     setLastTimer(setTimeout(() => calculatorPost(data), 1500))
   }
+
+  watch(() => clearInterval(lastTimer))
 
   return (
     <StyledLeftContainer>
