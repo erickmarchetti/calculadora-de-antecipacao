@@ -6,7 +6,7 @@ import {
 import api from "../../api/index"
 
 interface CalculatorContextProps {
-  calculatorResult: CalculatorResultDefault | null
+  calculatorResult: CalculatorResultDefault
   calculatorPost: (data: CalculatorPostData) => void
 }
 
@@ -14,13 +14,20 @@ interface CalculatorProviderProps {
   children: ReactNode
 }
 
-export const CalculatorContext = createContext<CalculatorContextProps | null>(
-  null
+const initialValue = {
+  1: 0,
+  15: 0,
+  30: 0,
+  90: 0
+}
+
+export const CalculatorContext = createContext<CalculatorContextProps>(
+  {} as CalculatorContextProps
 )
 
 export const CalculatorProvider = ({ children }: CalculatorProviderProps) => {
   const [calculatorResult, setCalculatorResult] =
-    useState<CalculatorResultDefault | null>(null)
+    useState<CalculatorResultDefault>(initialValue)
 
   const calculatorPost = (data: CalculatorPostData) => {
     api
@@ -28,7 +35,7 @@ export const CalculatorProvider = ({ children }: CalculatorProviderProps) => {
       .then((res) => setCalculatorResult(res.data))
       .catch((err) => {
         console.log(err)
-        setCalculatorResult(null)
+        setCalculatorResult(initialValue)
       })
   }
 

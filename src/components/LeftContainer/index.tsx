@@ -25,7 +25,7 @@ const calculatorFormSchema = yup.object({
 
 const LeftContainer = () => {
   const [lastTimer, setLastTimer] = useState<NodeJS.Timeout | undefined>()
-  const calculatorContext = useCalculatorContext()
+  const { calculatorPost } = useCalculatorContext()
 
   const {
     register,
@@ -41,9 +41,7 @@ const LeftContainer = () => {
   const onSubmit = (data: CalculatorPostData) => {
     clearTimeout(lastTimer)
 
-    setLastTimer(
-      setTimeout(() => calculatorContext?.calculatorPost(data), 1500)
-    )
+    setLastTimer(setTimeout(() => calculatorPost(data), 1500))
   }
 
   return (
