@@ -1,6 +1,10 @@
 import styled from "styled-components"
 
-export const StyledInput = styled.div`
+interface StyledInputProps {
+  hasError: boolean
+}
+
+export const StyledInput = styled.div<StyledInputProps>`
   display: flex;
   flex-flow: column nowrap;
 
@@ -13,7 +17,9 @@ export const StyledInput = styled.div`
     height: 37px;
 
     color: black;
-    border: 1.5px solid var(--input-border);
+    border: 1.5px solid
+      ${({ hasError }) =>
+        hasError ? "var(--input-error)" : "var(--input-border)"};
     border-radius: 4px;
     padding: 0 0 0 14px;
     transition: 0.4s;

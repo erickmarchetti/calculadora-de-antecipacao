@@ -18,7 +18,7 @@ const Input = ({
   placeholder
 }: InputProps) => {
   return (
-    <StyledInput>
+    <StyledInput hasError={!!errors[registerName]?.message}>
       <span>{label}</span>
       <input
         type="number"
