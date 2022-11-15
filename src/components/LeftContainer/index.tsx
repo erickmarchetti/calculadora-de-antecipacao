@@ -14,13 +14,17 @@ const calculatorFormSchema = yup.object({
   amount: yup
     .number()
     .positive("Deve ser positivo")
-    .integer("Deve ser inteiro"),
+    .integer("Deve ser inteiro")
+    .min(1000, "Deve ser maior ou igual a 1000"),
   installments: yup
     .number()
     .positive("Deve ser positivo")
     .integer("Deve ser inteiro")
     .max(12, "Máximo 12 parcelas"),
-  mdr: yup.number().positive("Deve ser positivo")
+  mdr: yup
+    .number()
+    .positive("Deve ser positivo")
+    .max(100, "Deve ser menor ou igual a 100")
 })
 
 const LeftContainer = () => {
@@ -46,7 +50,7 @@ const LeftContainer = () => {
 
   return (
     <StyledLeftContainer>
-      <h1>h1</h1>
+      <h1>Simule sua Antecipação</h1>
       <form onChange={handleSubmit(onSubmit)}>
         <Input
           label="Informe o valor da venda *"

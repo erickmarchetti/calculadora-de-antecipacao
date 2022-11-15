@@ -6,8 +6,8 @@ const List = () => {
 
   return (
     <StyledList>
-      {Object.entries(calculatorResult).map(([key, value]) => (
-        <li>
+      {Object.entries(calculatorResult).map(([key, value], index) => (
+        <li key={index}>
           <span>{key === "1" ? `Amanhã: ` : `Em ${key} dias: `}</span>
           <span>
             {(value / 100).toLocaleString("pt-br", {

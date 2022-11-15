@@ -40,7 +40,7 @@ export const GlobalStyle = createGlobalStyle`
       --background-list: #D1DCE32E;
       --input-focus: #66AFE9;
       --input-border: #DDE6E9;
-      --input-error: #E5534B;
+      --input-error: #F71735;
       --text-default: #656565;
       --title-list: #3D75BB;
       --text-list: #5D9CEC;

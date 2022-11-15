@@ -43,7 +43,7 @@ export const CalculatorProvider = ({ children }: CalculatorProviderProps) => {
         .catch((err) => {
           console.log(err)
           setCalculatorResult(initialValue)
-          toast.error("Ocorreu um erro", { delay: 500 })
+          toast.error(`${err.response.data}`, { delay: 500 })
         }),
       { pending: "Carregando..." }
     )

@@ -26,7 +26,7 @@ const Input = ({
         {...register(registerName)}
       />
       {errors[registerName]?.message && (
-        <span>
+        <span className="containerInput__span--error">
           {errors[registerName]?.message?.includes("NaN")
             ? "Campo obrigatório"
             : errors[registerName]?.message}
