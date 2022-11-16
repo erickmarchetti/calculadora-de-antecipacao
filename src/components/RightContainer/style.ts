@@ -17,12 +17,14 @@ export const StyledRightContainer = styled.div`
     font-style: italic;
     width: 69.7%;
     min-width: fit-content;
+    max-width: 250px;
     color: var(--title-list);
     margin-bottom: 4px;
   }
 
   .rightContainer__div--divider {
     width: 69.7%;
+    max-width: 250px;
     background-color: var(--text-list);
     height: 2px;
     opacity: 30%;

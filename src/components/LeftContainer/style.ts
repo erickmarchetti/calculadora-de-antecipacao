@@ -3,7 +3,7 @@ import styled from "styled-components"
 export const StyledLeftContainer = styled.div`
   height: 100%;
   width: 62%;
-  padding: 0 0 0 56px;
+  padding-left: 56px;
   background-color: white;
 
   display: flex;
@@ -25,5 +25,10 @@ export const StyledLeftContainer = styled.div`
     display: flex;
     flex-flow: column nowrap;
     gap: 26px;
+  }
+
+  @media (max-width: 607px) {
+    align-items: center;
+    padding: 0;
   }
 `

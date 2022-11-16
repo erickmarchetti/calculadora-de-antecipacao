@@ -3,6 +3,7 @@ import styled from "styled-components"
 export const StyledList = styled.ul`
   width: 69.7%;
   min-width: fit-content;
+  max-width: 250px;
   max-height: 177px;
   overflow-y: scroll;
 

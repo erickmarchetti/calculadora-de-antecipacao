@@ -9,4 +9,14 @@ export const StyledContainer = styled.div`
 
   border: 1px solid var(--container-border);
   border-radius: 4px;
+
+  @media (max-width: 500px) {
+    flex-flow: column nowrap;
+    height: fit-content;
+
+    & > div {
+      width: 100%;
+      padding: 20px 0 20px 0;
+    }
+  }
 `
