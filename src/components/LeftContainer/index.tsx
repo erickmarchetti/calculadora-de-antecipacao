@@ -10,6 +10,7 @@ import { CalculatorPostData } from "../../interfaces"
 import { StyledLeftContainer } from "./style"
 import useCalculatorContext from "../../providers/calculator"
 
+// schema que regula como deve ser a entrada dos inputs
 const calculatorFormSchema = yup.object({
   amount: yup
     .number()
@@ -28,9 +29,11 @@ const calculatorFormSchema = yup.object({
 })
 
 const LeftContainer = () => {
+  // timer que contabiliza um delay depois que todos os campos foram preenchidos corretamente
   const [lastTimer, setLastTimer] = useState<NodeJS.Timeout | undefined>()
   const { calculatorPost } = useCalculatorContext()
 
+  // config do react-hook-form, todas as configs estão na documentação
   const {
     register,
     watch,
@@ -44,12 +47,14 @@ const LeftContainer = () => {
     resolver: yupResolver(calculatorFormSchema)
   })
 
+  // chama a função que faz a requisição depois de um delay
   const onSubmit = (data: CalculatorPostData) => {
     clearTimeout(lastTimer)
 
     setLastTimer(setTimeout(() => calculatorPost(data), 1500))
   }
 
+  // limpa o timer toda vez que o usuário digita alguma coisa
   watch(() => clearInterval(lastTimer))
 
   return (
