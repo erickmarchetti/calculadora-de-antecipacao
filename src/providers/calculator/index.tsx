@@ -37,13 +37,23 @@ export const CalculatorProvider = ({ children }: CalculatorProviderProps) => {
       api
         .post("", data)
         .then((res) => {
+          console.log(res)
           setCalculatorResult(res.data)
           toast.success("Calculo feito!", { delay: 500 })
         })
         .catch((err) => {
           console.log(err)
           setCalculatorResult(initialValue)
-          toast.error(`${err.response.data}`, { delay: 500 })
+          toast.error(
+            `${
+              err?.response?.data?.message
+                ? "Ocorreu um erro: " +
+                  err.response.data?.message +
+                  ", verifique a conexão com a internet ou tente novamente mais tarde"
+                : "Verifique sua conexão com a internet e tente novamente"
+            }`,
+            { delay: 500 }
+          )
         }),
       { pending: "Carregando..." }
     )
