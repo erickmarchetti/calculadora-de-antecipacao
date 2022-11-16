@@ -20,11 +20,13 @@ const Input = ({
   return (
     <StyledInput hasError={!!errors[registerName]?.message}>
       <span>{label}</span>
+
       <input
         type="number"
         placeholder={placeholder}
         {...register(registerName)}
       />
+
       {errors[registerName]?.message && (
         <span className="containerInput__span--error">
           {errors[registerName]?.message?.includes("NaN")
