@@ -11,15 +11,32 @@ export const StyledRightContainer = styled.div`
   justify-content: center;
   align-items: center;
 
+  .rightContainer__header {
+    width: 69.7%;
+    max-width: 250px;
+    margin-bottom: 4px;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   h2 {
     font-size: 18px;
     font-weight: bold;
     font-style: italic;
-    width: 69.7%;
-    min-width: fit-content;
-    max-width: 250px;
+    width: fit-content;
     color: var(--title-list);
-    margin-bottom: 4px;
+  }
+
+  .rightContainer__button--gear {
+    display: flex;
+    height: fit-content;
+
+    border: 1px solid var(--title-list);
+    border-radius: 4px;
+    padding: 2px;
   }
 
   .rightContainer__div--divider {
