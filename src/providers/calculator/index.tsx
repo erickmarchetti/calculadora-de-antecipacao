@@ -12,6 +12,7 @@ import { toast } from "react-toastify"
 interface CalculatorContextProps {
   calculatorResult: CalculatorResultDefault
   calculatorPost: (data: CalculatorPostData) => void
+  setDays: React.Dispatch<React.SetStateAction<number[]>>
 }
 
 // tipagem padrão de um children
@@ -36,8 +37,14 @@ export const CalculatorProvider = ({ children }: CalculatorProviderProps) => {
   const [calculatorResult, setCalculatorResult] =
     useState<CalculatorResultDefault>(initialValue)
 
+  const [days, setDays] = useState<number[]>([])
+
   // função que faz a requisição, todas as funções de toast são para notificar o usuário dos processos
   const calculatorPost = (data: CalculatorPostData) => {
+    if (days.length > 0) {
+      data.days = days
+    }
+
     toast.promise(
       api
         .post("", data)
@@ -63,7 +70,9 @@ export const CalculatorProvider = ({ children }: CalculatorProviderProps) => {
   }
 
   return (
-    <CalculatorContext.Provider value={{ calculatorResult, calculatorPost }}>
+    <CalculatorContext.Provider
+      value={{ calculatorResult, calculatorPost, setDays }}
+    >
       {children}
     </CalculatorContext.Provider>
   )
