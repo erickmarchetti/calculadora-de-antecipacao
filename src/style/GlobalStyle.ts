@@ -45,5 +45,6 @@ export const GlobalStyle = createGlobalStyle`
       --background-list: #D1DCE32E;
       --title-list: #3D75BB;
       --text-list: #5D9CEC;
+      --background-modal: #f2f2f2ab;
     }
 `
