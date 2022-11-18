@@ -22,6 +22,7 @@ export const StyledInput = styled.div<StyledInputProps>`
         hasError ? "var(--input-error)" : "var(--input-border)"};
     border-radius: 4px;
     padding: 0 0 0 14px;
+    margin-bottom: 3px;
     transition: 0.4s;
 
     &:focus {
@@ -51,7 +52,6 @@ export const StyledInput = styled.div<StyledInputProps>`
     font-size: 13px;
     color: var(--input-error);
     font-weight: 600;
-    margin-top: 3px;
     margin-bottom: 0;
   }
 `

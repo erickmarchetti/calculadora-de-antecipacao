@@ -9,6 +9,8 @@ interface InputProps {
   registerName: "amount" | "installments" | "mdr" | "days"
   errors: Partial<FieldErrorsImpl<CalculatorPostData>>
   placeholder: string
+  type: string
+  modalInput?: boolean
 }
 
 const Input = ({
@@ -16,24 +18,34 @@ const Input = ({
   register,
   registerName,
   errors,
-  placeholder
+  placeholder,
+  type,
+  modalInput
 }: InputProps) => {
-  // hasError é uma propriedade que define se a borda do input vai ficar vermelha ou não
+  const modalErrors = Array.isArray(errors?.days)
+    ? errors.days.reduce(
+        (acc, item) => (item?.message ? (acc += item.message) : acc),
+        ""
+      )
+    : "Deve ser uma lista de números envoltos por colchetes ([])"
+
+  const normalErrors = errors[registerName]?.message?.includes("NaN")
+    ? "Campo obrigatório"
+    : errors[registerName]?.message
+
   return (
-    <StyledInput hasError={!!errors[registerName]?.message}>
+    <StyledInput hasError={!!errors[registerName]}>
       <span>{label}</span>
 
       <input
-        type="number"
+        type={type}
         placeholder={placeholder}
         {...register(registerName)}
       />
 
-      {errors[registerName]?.message && ( // Verifica se existe erro na entrada do input
+      {errors[registerName] && (
         <span className="containerInput__span--error">
-          {errors[registerName]?.message?.includes("NaN")
-            ? "Campo obrigatório"
-            : errors[registerName]?.message}
+          {modalInput ? modalErrors : normalErrors}
         </span>
       )}
     </StyledInput>

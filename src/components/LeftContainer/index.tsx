@@ -67,6 +67,7 @@ const LeftContainer = () => {
           register={register}
           registerName="amount"
           errors={errors}
+          type="number"
         />
         <Input
           label="Em quantas parcelas *"
@@ -74,6 +75,7 @@ const LeftContainer = () => {
           register={register}
           registerName="installments"
           errors={errors}
+          type="number"
         />
         <Input
           label="Informe o percentual de MDR *"
@@ -81,6 +83,7 @@ const LeftContainer = () => {
           register={register}
           registerName="mdr"
           errors={errors}
+          type="number"
         />
       </form>
     </StyledLeftContainer>
