@@ -10,10 +10,12 @@ import useCalculatorContext from "../../providers/calculator"
 import { VscChromeClose } from "react-icons/vsc"
 import { toast } from "react-toastify"
 
+// props recebidas pelo componente modal
 interface modalProps {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
+// schema de validação do input de days
 const modalSchema = yup.object({
   days: yup.array(
     yup
@@ -35,10 +37,11 @@ const Modal = ({ setIsOpen }: modalProps) => {
     resolver: yupResolver(modalSchema)
   })
 
+  // assim que a validação do input é feita, o novo array de dias é configurado
   const onSubmit = (data: CalculatorPostData) => {
     data?.days && setDays(data.days)
     setIsOpen(false)
-    toast.success("Tudo certo!")
+    toast.success("Configuração salva!")
   }
 
   return (

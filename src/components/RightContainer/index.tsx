@@ -5,6 +5,7 @@ import { VscSettingsGear } from "react-icons/vsc"
 import { useState } from "react"
 
 const RightContainer = () => {
+  // boleano que regula se modal está aberto ou não
   const [isOpen, setIsOpen] = useState<boolean>(false)
 
   return (

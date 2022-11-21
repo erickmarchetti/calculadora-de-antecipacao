@@ -22,6 +22,7 @@ const Input = ({
   type,
   modalInput
 }: InputProps) => {
+  // erros que vão ser tratados no modal
   const modalErrors = Array.isArray(errors?.days)
     ? errors.days.reduce(
         (acc, item) => (item?.message ? (acc += item.message) : acc),
@@ -29,6 +30,7 @@ const Input = ({
       )
     : "Deve ser uma lista de números envoltos por colchetes ([])"
 
+  // erros que vão ser tratados no input normal
   const normalErrors = errors[registerName]?.message?.includes("NaN")
     ? "Campo obrigatório"
     : errors[registerName]?.message

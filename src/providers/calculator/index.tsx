@@ -41,6 +41,7 @@ export const CalculatorProvider = ({ children }: CalculatorProviderProps) => {
 
   // função que faz a requisição, todas as funções de toast são para notificar o usuário dos processos
   const calculatorPost = (data: CalculatorPostData) => {
+    // verifica se o array de dias deve ser enviado na requisição, não deve ser enviado se estiver vazio
     if (days.length > 0) {
       data.days = days
     }
